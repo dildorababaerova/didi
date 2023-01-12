@@ -1,4 +1,4 @@
-#ensimmäinen ohjelma
+# ensimmäinen ohjelma
 
 print('Hello world')
 
