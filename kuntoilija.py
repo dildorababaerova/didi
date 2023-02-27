@@ -12,7 +12,7 @@ import fitnes
 class Kuntoilija:
     """Luokka kuntoilijan tietoa varten"""
 
-    #Olimuodostin eli konstruktori
+    #Olimuodostin eli konstruktori, self -> tuleva olio
     def __init__(self, nimi, pituus, paino, ika, sukupuoli):
 
         #MÄÄRITELLÄÄN TULEVAN OLION OMINAISUUDET (PROPERTY), LUOKAN KENTÄÄT (FIELD)
@@ -24,10 +24,43 @@ class Kuntoilija:
         self.bmi = fitnes.laske_bmi(self.paino, self.pituus)
         
 
+        
+
     # Metodi rasvaprosentin laskimeseen (aikuinen / yleinen)
     def rasvaprosentti (self):
         self.rasvaprosentti = fitnes.aikuisen_rasvaprosentti(self.bmi, self.ika, self.sukupuoli)
         return self.rasvaprosentti 
+    
+
+    #Metodi rasvaprosenttien laskemiseen USA:n metodeilla
+    def usa_rasvaprosentti_mies(self, pituus, vyotaron_ymparys, kaulan_ymparys):
+        """Laskee miehen rasvaprosentin USA:n kaavalla
+
+        Args:
+            pituus (float): pituus (cm)
+            kaulan_ymparys (float): kaulanympärys (cm)
+            kaulan_ymparys(float): kaulan ympärys (cm)
+            Returns:
+            float: rasvaprosentti
+        """
+        usa_rasvaprosentti = fitnes.usarasvaprosenttimies(pituus, vyotaron_ymparys, kaulan_ymparys)
+        return usa_rasvaprosentti
+    
+    def usa_rasvaprosentti_nainen(self, pituus, vyotaron_ymparys, kaulan_ymparys, lantion_ymparys):
+        """_summary_
+
+        Args:
+            vyotaron_ymparys(float): vyötärön ympärysmitta (cm)
+            kaulan_ymparys (float): kaulan ympärysmitta (cm)
+            lantion_ymparys (float): lantion ympärysmitta (cm)
+        
+        Returns:
+            float: rasvaprosentti
+
+        """
+        usa_rasvaprosentti = fitnes.usarasvaprosentti_nainen(pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys)
+        return usa_rasvaprosentti
+      
 
 
 # JunioriKuntoilija_luokka Kuntoilija-luokan aliluokka(subclass)

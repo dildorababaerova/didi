@@ -1,7 +1,8 @@
 #Sovellus Painoindeksin ja kehon rasvaprosentin laskemiseen
 #==========================================================
 
-
+# Kirjastot ja moduulit
+import math
 
 '''
 pituus_metreina = pituus / 100
@@ -65,10 +66,68 @@ def lapsen_rasvaprosentti(bmi, ika, sukupuoli):
     rasvaprosentti = round(rasvaprosentti, 1)
 
     return rasvaprosentti
+
+# Usa:n rasvaprosentti kaava
+
+def usarasvaprosenttimies(pituus, vyotaron_ymparys, kaulan_ymparys):
+    """Laske miehen rasvaprosentti usa:n kaavalla
+
+    Args:
+        pituus (float): pituus (cm)
+        vyotaron_ymparys (float): vyötärön_ympärysmitta (cm)
+        kaulan_ymparys (float): kaulan_ympärysmitta (cm)
         
+    Returns:
+        float: rasvaprosentti
+        """
+    #Muutetaan mitat tuumiksi
+    tuuma_pituus = pituus / 2.54
+    tuuma_vyotaro_ymparys = vyotaron_ymparys / 2.54
+    tuuma_kaulan_ymparys = kaulan_ymparys / 2.54
+
+
+    #Lasketaan rasvaprosentti
+
+    usarprosentti = 86.01*math.log10(tuuma_vyotaro_ymparys-tuuma_kaulan_ymparys)-70.041*math.log10(tuuma_pituus)+36.76
+    
+    
+    return usarprosentti
+
+def usarasvaprosentti_nainen(pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys):
+    """Laske nasten rasvaprosentti usa:n kaavalla
+
+    Args:
+        pituus (float): pituus (cm)
+        vyotaron_ymparys (float): vyötärön_ympärysmitta (cm)
+        kaulan_ymparys (float): kaulan_ympärysmitta (cm)
+        lantion_ymparys (float): lantion_ympärysmitta (cm)
+        
+    Returns:
+        float: rasvaprosentti
+        """
+    
+    #Muutetaan mitat tuumiksi
+    tuuma_pituus = pituus / 2.5
+    tuuma_vyotaro_ymparys = vyotaron_ymparys / 2.54
+    tuuma_kaulan_ymparys = kaulan_ymparys / 2.54
+    tuuma_lantion_ymparys = lantion_ymparys / 2.54
+
+
+    #Laskentaan rasvaprosentti
+
+    usa_rasvaprosentti = 163.205*math.log10(tuuma_vyotaro_ymparys+tuuma_lantion_ymparys-tuuma_kaulan_ymparys)-97.684*math.log10(
+        tuuma_pituus)-78.387
+    
+    
+    return usa_rasvaprosentti
+
+
+
+
 #Suoritetaan seuraavat rivit vain, jos tämä tiedosto on pääohjelma
 #Mahdollistaa funktioiden lataamisen toisiin ohjelmiin
 #Kunn koodi ladataan toiseen tiedostoon, if__name == "__main__" :n alapuolella olevaakodia ei suoritetaan
+
 if __name__ == "__main__":
 
     #Muuttujat
@@ -77,13 +136,24 @@ if __name__ == "__main__":
     pituus_teksti = input('Kuika pitkä olet (cm): ')
     paino_teksti = input('Kuinka paljon painat(kg): ')
     ikä_teksti = input('Kuinka vanha olet: ')
-    sukupuoli_teksti = input('Sukupuoli mies, vastaa 1, nainen, vastaa 0: ')
+    sukupuoli_teksti = input('Sukupuoli mies, vastaa 1, nainen, vastaa 0: ')    
+    vyotaron_ymparys_teksti = input('Mikä on vyötaron ympärykseksi (cm): ')
+    kaulan_ymparys_teksti = input('Mikä on kaulasi ympärysmitta? (cm) : ')
 
+    #Jos vastaus Sukupuolikysymyksen on nainen kysy lantion ympärysmittauksen
+    if sukupuoli_teksti == "0" :
+        lantion_ymparys_teksti = input("Mika on sinun lantion ympärysmitta? (cm):")
+    
     #Muuttujan vastauksen liukuluvuksi
     pituus = float(pituus_teksti)  #Muutetaan liukuluvuksi
     paino = float(paino_teksti)  
     ika = float (ikä_teksti)
     sukupuoli = float(sukupuoli_teksti)
+    vyotaron_ymparys = float(vyotaron_ymparys_teksti)
+    kaulan_ymparys = float(kaulan_ymparys_teksti)
+    lantion_ymparys = float(lantion_ymparys_teksti)
+
+
 
     #Lasketaaan painoindeksi funktiolla laske_bmi
     oma_bmi = laske_bmi(paino, pituus)
@@ -99,3 +169,15 @@ if __name__ == "__main__":
 
     print ('Painoindeksisi on', oma_bmi,
     'ja kehon rasvaprosenttti on',oma_rasvaprosentti)
+
+    
+    #Jos mies laske miehen kaavalla, muussatapauksessa naisten kaavalla
+
+    if sukupuoli == "1":
+        
+        usa_rasvaprosentti = usarasvaprosenttimies(pituus, vyotaron_ymparys, kaulan_ymparys)
+    
+    else:
+
+        usa_rasvaprosentti = usarasvaprosentti_nainen(pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys)
+    print("Usa:n armeijan kaavan mukaan rasvaprosenttisi ", usa_rasvaprosentti)  
