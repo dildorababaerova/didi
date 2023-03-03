@@ -7,31 +7,6 @@ import kuntoilija
 
 
 # Ask a question and convert the answer to float
-def ask_user(question):
-    """Ask a question from the user and converts answer to a floading point number
-
-    Args:
-        question (str): The question to ask
-
-    Returns:
-        tuple: answer as float, Error message, Error code and a detailed error message
-    """
-    # Loop until user gives a correctly formatted value  
-    while True:
-        answer_txt = input(question)
-
-
-    # Let try convert input to numeric
-        try:
-            answer = float(answer_txt)
-            result = (answer, "OK", 0, "Conversion successful")
-            break
-
-        # If en error occurs tell the user to check   
-        except Exception as e:
-            print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)        
-            result = (0, "Error", 0, str(e))
-    return result
 
 
 # Enter information about an athlete
