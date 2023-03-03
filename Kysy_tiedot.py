@@ -14,7 +14,7 @@ while True: # Ikuinen silmukka jossa ollaan kunnes annetaan tyhjä pituus
         
         nimi = input("Nimi, tyhjä lopettaa: ")
         
-        if nimi == "":
+        if nimi == " ":
             break
         
         nimilista.append(nimi)

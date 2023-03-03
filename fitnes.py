@@ -34,7 +34,7 @@ def laske_bmi(paino, pituus):
 
 #Määritellään funktio aikuisen kehonrasvaprosentin laskimiseen
 def aikuisen_rasvaprosentti(bmi, ika, sukupuoli):
-    """Laske lapsen kehon rasvaprosentti
+    """Laske aikuisen kehon rasvaprosentti
 
     Args:
         bmi (float): paino indeksi
@@ -94,7 +94,7 @@ def usarasvaprosenttimies(pituus, vyotaron_ymparys, kaulan_ymparys):
     return usarprosentti
 
 def usarasvaprosentti_nainen(pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys):
-    """Laske nasten rasvaprosentti usa:n kaavalla
+    """Laske nasten rasvaprosentti usa:n armeijan kaavalla
 
     Args:
         pituus (float): pituus (cm)
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     'ja kehon rasvaprosenttti on',oma_rasvaprosentti)
 
     
-    #Jos mies laske miehen kaavalla, muussatapauksessa naisten kaavalla
+    #Jos mies laske miehen kaavalla, muussa tapauksessa naisten kaavalla
 
     if sukupuoli == "1":
         
