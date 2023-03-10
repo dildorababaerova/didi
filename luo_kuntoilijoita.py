@@ -3,6 +3,7 @@
 
 # LIBRARIES AND MODULES
 import kuntoilija
+import question
 
 
 
@@ -10,71 +11,39 @@ import kuntoilija
 
 
 # Enter information about an athlete
-nimi = input("Nimi: ")
+name = input("Nimi: ")
 
-# Use ask user function to get heigt and convert it in float
-answer = ask_user("Pituus (cm) ")
+#Ask details about her/him
+question1 = question.Question("Kuinka paljon painat(kg): ")
+weight =question1.ask_user_float(True)[0]
+question2 = question.Question("Kuinka pitkä olet(cm): ")
+height = question2.ask_user_float(True)[0]
+question3 = question.Question("Kuinka vanha olet: ")
+age = question3.ask_user_integer(True)[0]
+question4 = question.Question("Sukupuoli 1 mies, 0 nainen: ")
+gender = question4.ask_user_integer(True)[0]
+question5 =question.Question("Mikä on kaulanympäryksesi (cm): ")
+neck = question5.ask_user_float(True)[0]
+question6 = question.Question("Mikä on vyötärönympäryksesi (cm): ")
+waist = question6.ask_user_float(True)[0]
+if gender == 0:
+    question7 = question.Question("Mikä on lantionnympäryksesi (cm): ")
+    hips = question7.ask_user_float(True)[0]
 
-# Read the list element of the tuple conteining height value
-pituus = answer[0]
+# Create an athlete object from Kuntoilija class
+athlete = kuntoilija.Kuntoilija (name, height, weight, age, gender)
 
+# Print some information about the athlete
+text_to_show = f"Terve {athlete.nimi}, paioindeksi tänään on {athlete.bmi}"
+print(text_to_show)
 
-answer = ask_user("Paino (kg) ")
-paino = answer[0]
+fat_persentage = athlete.rasvaprosentti()
+if gender == 1:
+    usa_fat_persentage = athlete.usa_rasvaprosentti_mies(height, waist, neck)
+else:
+    usa_fat_persentage = athlete.usa_rasvaprosentti_nainen(height, waist, hips, neck)
 
-answer = ask_user("Ikä  ")
-ika = answer[0]
+text_to_show = f"suomalainen rasva-% on {fat_persentage} ja amerikkalainen on {usa_fat_persentage}"
+print(text_to_show)
 
-answer = ask_user("sukupuoli, jos mies 1, jos nainen 0  ")
-sukupuoli = answer[0]
-
-
-"""
-# Loop until correct weight value
-while True:
-    paino_txt = input("Paino (kg): ")
-
-
-# Let try convert input to numeric
-    try:
-        paino = float(paino_txt)
-        break
-
-# If en error occurs tell the user to check   
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)
-
-# Loop until correct age value
-while True:
-    ika_txt = input("Ika: ")
-
-
-# Let try convert input to numeric
-    try:
-        ika = float(ika_txt)
-        break
-
-# If en error occurs tell the user to check   
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)  
-
-
-# Loop until correct gender value
-while True:
-    sukupuoli_txt = input("Sukupuoli, 1 mies, 0 nainen: ")
-
-
-# Let try convert input to numeric
-    try:
-        sukupuoli = float(sukupuoli_txt)
-        break
-
-# If en error occurs tell the user to check   
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, vain 1 ja 0 sallittu", e)
-        """
-
-kuntoilija1 = kuntoilija.Kuntoilija(nimi, pituus, paino, ika, sukupuoli)
-print(kuntoilija1.nimi, "painoindeksisi on", kuntoilija1.bmi)
-print("Viimeisen kysymyksen virheilmoitus", answer[1], "koodi", answer[2], "engl.ilmoitus", answer[3])
-
+ 
