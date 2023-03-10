@@ -99,24 +99,26 @@ def usarasvaprosentti_nainen(pituus, vyotaron_ymparys, lantion_ymparys, kaulan_y
     Args:
         pituus (float): pituus (cm)
         vyotaron_ymparys (float): vyötärön_ympärysmitta (cm)
-        kaulan_ymparys (float): kaulan_ympärysmitta (cm)
         lantion_ymparys (float): lantion_ympärysmitta (cm)
+        kaulan_ymparys (float): kaulan_ympärysmitta (cm)
+        
         
     Returns:
         float: rasvaprosentti
         """
     
     #Muutetaan mitat tuumiksi
-    tuuma_pituus = pituus / 2.5
+    tuuma_pituus = pituus / 2.54
     tuuma_vyotaro_ymparys = vyotaron_ymparys / 2.54
-    tuuma_kaulan_ymparys = kaulan_ymparys / 2.54
     tuuma_lantion_ymparys = lantion_ymparys / 2.54
+    tuuma_kaulan_ymparys = kaulan_ymparys / 2.54
+    
 
 
     #Laskentaan rasvaprosentti
 
-    usa_rasvaprosentti = 163.205*math.log10(tuuma_vyotaro_ymparys+tuuma_lantion_ymparys-tuuma_kaulan_ymparys)-97.684*math.log10(
-        tuuma_pituus)-78.387
+    usa_rasvaprosentti = 163.205*math.log10(tuuma_vyotaro_ymparys + tuuma_lantion_ymparys - tuuma_kaulan_ymparys) - 97.684 * math.log10(
+        tuuma_pituus) - 78.387
     
     
     return usa_rasvaprosentti
@@ -150,8 +152,9 @@ if __name__ == "__main__":
     ika = float (ikä_teksti)
     sukupuoli = float(sukupuoli_teksti)
     vyotaron_ymparys = float(vyotaron_ymparys_teksti)
-    kaulan_ymparys = float(kaulan_ymparys_teksti)
     lantion_ymparys = float(lantion_ymparys_teksti)
+    kaulan_ymparys = float(kaulan_ymparys_teksti)
+    
 
 
 
