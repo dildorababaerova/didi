@@ -4,7 +4,7 @@
 # KIRJASTOT JA MODULIT (LIBRARIES AND MODULES)
 # --------------------------------------------
 
-import fitnes
+import fitness
 
 # LUOKKAMÄÄRITYKSET (CLASS DEFINITIONS)
 # -------------------------------------
@@ -24,11 +24,11 @@ class Kuntoilija:
         self.paino = paino
         self.ika = ika
         self.sukupuoli = sukupuoli
-        self.bmi = fitnes.laske_bmi(self.paino, self.pituus)
+        self.bmi = fitness.laske_bmi(self.paino, self.pituus)
 
     # Metodi rasvaprosentin laskemiseen (yleinen / aikuinen)
     def rasvaprosentti(self):
-        self.rasvaprosentti = fitnes.aikuisen_rasvaprosentti(
+        self.rasvaprosentti = fitness.aikuisen_rasvaprosentti(
             self.bmi, self.ika, self.sukupuoli)
         return self.rasvaprosentti
 
@@ -42,7 +42,7 @@ class Kuntoilija:
         Returns:
             float: rasvaprosentti
         """
-        usa_rasvaprosentti = fitnes.usarasvaprosentti_mies(pituus, vyotaron_ymparys,kaulan_ymparys)
+        usa_rasvaprosentti = fitness.usarasvaprosentti_mies(pituus, vyotaron_ymparys,kaulan_ymparys)
         return usa_rasvaprosentti
 
     def usa_rasvaprosentti_nainen(self, pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys):
@@ -55,7 +55,7 @@ class Kuntoilija:
         Returns:
             float: rasvaprosentti
         """
-        usa_rasvaprosentti = fitnes.usarasvaprosentti_nainen(
+        usa_rasvaprosentti = fitness.usarasvaprosentti_nainen(
             pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys)
         return usa_rasvaprosentti
 # JunioriKuntoilija-luokka Kuntoilija-luokan aliluokka (subclass)
@@ -72,7 +72,7 @@ class JunioriKuntoilija(Kuntoilija):
 
     # Metodi rasvaprosentin laskemiseen (ylikirjoitettu lapsen metodilla)
     def rasvaprosentti(self):
-        self.rasvaprosentti = fitnes.lapsen_rasvaprosentti(
+        self.rasvaprosentti = fitness.lapsen_rasvaprosentti(
             self.bmi, self.ika, self.sukupuoli)
         return self.rasvaprosentti
 
