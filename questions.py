@@ -155,7 +155,7 @@ if __name__ == "__main__":
     print(answer_and_error)
 
     question2 = Question('Kuinka vanha olet ')
-    answer_and_error = question2.ask_user_integer(True)
+    answer_and_error = question2.ask_user_integer(False)
     print(answer_and_error)
 
     question3 = Question('Haluatko lähteä viikonlopun viettoon?')
