@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     
 
-    oma_bmi = laske_bmi(paino, pituus,)
+    oma_bmi = laske_bmi(paino, pituus)
 
 
 # yli 18 vuotiaalla käytetään aikuisen kaavaa

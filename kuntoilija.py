@@ -42,7 +42,7 @@ class Kuntoilija:
         Returns:
             float: rasvaprosentti
         """
-        usa_rasvaprosentti = fitness.usarasvaprosentti_mies(pituus, vyotaron_ymparys,kaulan_ymparys)
+        usa_rasvaprosentti = fitness.usarasvaprosentti_mies(pituus, vyotaron_ymparys, kaulan_ymparys)
         return usa_rasvaprosentti
 
     def usa_rasvaprosentti_nainen(self, pituus, vyotaron_ymparys, lantion_ymparys, kaulan_ymparys):

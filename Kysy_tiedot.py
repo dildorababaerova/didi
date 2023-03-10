@@ -5,7 +5,7 @@
 #---------------------
 
 #Tuodaan fitnes.py:n sisältämät toiminnot tähän ohjelmaan
-import fitnes
+import fitness
 
 #Kysytään tiediot ja tulostetaan painoindeksi kunnes halutaan lopettaa
 bmi_lista = []
@@ -27,7 +27,7 @@ while True: # Ikuinen silmukka jossa ollaan kunnes annetaan tyhjä pituus
             paino = float(paino_teksti)
 
             #Lasketaan painoindeksi fitnes-modulin laske bmi-funktiolla
-            bmi = fitnes.laske_bmi(paino, pituus)
+            bmi = fitness.laske_bmi(paino, pituus)
 
             #Luodaan monikko (tuple), jossa nimi ja bmi
             monikko = (nimi, bmi)
