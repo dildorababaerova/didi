@@ -193,17 +193,17 @@ class Question():
 
 
 if __name__ == "__main__":
+    #Lets ask the weght and 
 
 
     
-    question = Question('Kuinka paljon painat (kg) ')
-    answer_and_error = question.ask_user_float(False)
+    answer_and_error = Question.ask_user_float('Kuinka paljon painat: ', True)
+    print(answer_and_error)
+    
+    answer_and_error = Question.ask_user_integer('Kuinka vanha olet: ', True)
     print(answer_and_error)
 
-    question2 = Question('Kuinka vanha olet ')
-    answer_and_error = question2.ask_user_integer(False)
+    answer_and_error = Question.ask_user_boolean('Haluatko lähteä viikonlopun viettoon?', 'Y', 'N', False)
     print(answer_and_error)
 
-    question3 = Question('Haluatko lähteä viikonlopun viettoon?')
-    answer_and_error =  question3.ask_user_boolean('Y', 'N', False)
-    print(answer_and_error)
+    
