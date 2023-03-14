@@ -85,3 +85,12 @@ def test_ask_user_boolean3(monkeypatch):
     question = questions.Question('Haluatko jatkaa')
     assert question.ask_user_boolean('Y', 'N', False) == (
         'N/A', 'Error', 1, 'unable to convert to boolean')
+        
+
+#Test to get value from dictionary    
+def test_ask_user_dictionary(monkeypatch):
+    user_input = 'jätkä'
+    gender_dictionary = {'tyttö': 0, 'poika': 1}        
+    monkeypatch.setattr('builtins.input', lambda _: user_input)    
+    assert questions.Question.ask_user_dictionary("Sukupuoli: ", gender_dictionary, False) == ('N/A', 'Error', 1)
+    

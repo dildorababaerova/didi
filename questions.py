@@ -174,7 +174,8 @@ class Question():
                 answer_txt = input(question)
                 try:
                     value = dictionary[answer_txt]
-                    result = (value, 'OK', 0, 'Conversion successful')            
+                    result = (value, 'OK', 0, 'Conversion successful')
+                    break            
                 except Exception as e:                    
                     result = ('N/A', 'Error', 1, str(e))        
         
@@ -183,7 +184,8 @@ class Question():
             answer_txt = input(question)
             try:
                 value = dictionary[answer_txt]
-                result = (value, 'OK', 0, 'Conversion successful')            
+                result = (value, 'OK', 0, 'Conversion successful') 
+                   
             except Exception as e:
                 result = ('N/A', 'Error', 1, str(e)) 
 
@@ -204,7 +206,7 @@ if __name__ == "__main__":
     answer_and_error = Question.ask_user_boolean('Oletko urheilullinen','Y', 'N', True)
     print(answer_and_error)
 
-    gender_dictionary = {"tyttö": 0,"poika": 1, "mies": 1, "nainen": 0,}
+    gender_dictionary = {"tyttö": 0, "poika": 1, "mies": 1, "nainen": 0,}
 
     answer_and_error = Question.ask_user_dictionary("Sukupuoli:" , gender_dictionary, True)
     print(answer_and_error)
