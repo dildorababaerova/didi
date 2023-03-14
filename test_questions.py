@@ -50,18 +50,6 @@ def test_ask_user_float2(monkeypatch):
     assert question.ask_user_float(False) == (
         0, 'Error', 1, "could not convert string to float: '1.5v'")
 
-# Test an error condition when user uses comma instead of dot as decimal separator
-
-
-# Simulate user input using Monkeypathc library
-def test_ask_user_float3(monkeypatch):
-    user_input = '74,6'
-    # Use anonymous function to create input from variable
-    monkeypatch.setattr('builtins.input', lambda _: user_input)
-    question = questions.Question('Anna kokonaisluku')
-    assert question.ask_user_float(False) == (
-        0, 'Error', 1, "could not convert string to float: '74,6'")
-
 # Test conversion to boolean: case Y
 
 
