@@ -187,7 +187,14 @@ class Question():
                 result = ('N/A', 'Error', 1, 'unable to convert to boolean')
 
         return result
+
+    #TODO: Create a method to ask a question and convert answer according to a dictionary
+
+
+
 if __name__ == "__main__":
+
+
     
     question = Question('Kuinka paljon painat (kg) ')
     answer_and_error = question.ask_user_float(False)

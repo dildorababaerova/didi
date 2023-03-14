@@ -37,3 +37,5 @@ else:
         height, waist, hips, neck)
 text_to_show = f'suomalainen rasva-% on {fat_percentage} ja amerikkalainen on {usa_fat_percentage}'
 print(text_to_show)
+
+#TODO: Save a user information to a file
