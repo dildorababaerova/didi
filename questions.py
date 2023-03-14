@@ -1,4 +1,4 @@
-# MODULE FOR ASKING QUESTIONS FROM CONSOLE AND CONVERTING ANSWERS TO VARIOUS DATA TYPES
+#MODULE FOR ASKING QUESTIONS FROM CONSOLE AND CONVERTING ANSWERS TO VARIOUS DATA TYPES
 # -------------------------------------------------------------------------------------
 
 # LIBRARIES AND MODULES
@@ -68,6 +68,7 @@ class Question():
         """
 
         # If loop argument is true use while loop until user inputs correct value
+
         if loop == True:
 
             while True:
