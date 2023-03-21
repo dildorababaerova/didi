@@ -1,6 +1,6 @@
 # Esimerkkejä päivämäärien, tiedostojen ja JSON-tietojen käytöstä
 
-import datetime  # Sisäänrakennettu kirjasto aikamääreille
+import datetime # Sisäänrakennettu kirjasto aikamääreille
 import json  # Sisäänrakennettu kirjasto JSON-objektien käsittelyä varten
 
 '''
@@ -81,6 +81,7 @@ print(data)
 with open('kuntoilijat.json', 'a') as file_to_use:
     json.dump(jumppari2, file_to_use)
 '''
+
 with open('kuntoilijat.json', 'w') as file_to_use:
     json.dump(jumppari_lista, file_to_use, indent=4)
 

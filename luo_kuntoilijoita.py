@@ -2,6 +2,7 @@
 # -------------------------------------------------------
 
 # LIBRARIES AND MODULES
+import json
 import kuntoilija
 import questions
 
@@ -11,22 +12,28 @@ import questions
 
 # Enter information about an athlete
 name = input('Nimi: ')
+date_of_weighing = input('Punnituspäivä (vvvv_kk_pp): ')
 
 # Ask details about her/him
 
-weight = questions.Question.ask_user_float('Kuinka paljon painat (kg): ', True)[0]
+weight = questions.Question.ask_user_float(
+    'Kuinka paljon painat (kg): ', True)[0]
 height = questions.Question.ask_user_float('Kuinka pitkä olet (cm): ', True)[0]
 age = questions.Question.ask_user_integer('Kuinka vanha olet', True)[0]
-gender = questions.Question.ask_user_integer('Sukupuoli 1 mies, 0 nainen: ', True)[0]
-neck = questions.Question.ask_user_float('Mikä on kaulanympäryksesi (cm): ', True)[0]
-waist = questions.Question.ask_user_float('Mikä on vyötärönympäryksesi: ', True)[0]
+gender = questions.Question.ask_user_integer(
+    'Sukupuoli 1 mies, 0 nainen: ', True)[0]
+neck = questions.Question.ask_user_float(
+    'Mikä on kaulanympäryksesi (cm): ', True)[0]
+waist = questions.Question.ask_user_float(
+    'Mikä on vyötärönympäryksesi: ', True)[0]
 
 # If woman ask circumference of her hips
 if gender == 0:
-    hips = questions.Question.ask_user_float('Mikä on lantionympäryksesi: ', True)[0]
+    hips = questions.Question.ask_user_float(
+        'Mikä on lantionympäryksesi: ', True)[0]
 
 # Create an athelete object from Kuntoilija class
-athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender)
+athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, date_of_weighing)
 
 # Print some information about the athlete
 text_to_show = f'Terve {athlete.nimi}, painoindeksisi tänään on {athlete.bmi}'
@@ -43,4 +50,30 @@ else:
 text_to_show = f'suomalainen rasva-% on {fat_percentage} ja amerikkalainen on {usa_fat_percentage}'
 print(text_to_show)
 
-# TODO: Save user information to a file
+print('nimi', athlete.nimi, 'paino', athlete.paino)
+
+# athlete_data = [] #Empty lista for all athlete date
+
+#Read previous athlete_data from disk
+
+with open('athlete_data.json', 'r') as file:
+    athlete_data = json.load(file)
+
+    for item in athlete_data:
+        print('paino oli', item['paino'])
+
+# A dictionary for single weighing of an athlete
+
+athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
+                'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva}
+
+# Add  a new row to  the athlete_data list
+athlete_data.append(athlete_data_row)
+
+
+
+# SAVE DATA  A FILE  
+with open('athlete_data.json', 'w') as file:
+    json.dump(athlete_data, file)
+    
+    
