@@ -12,7 +12,7 @@ import questions
 
 # Enter information about an athlete
 name = input('Nimi: ')
-date_of_weighing = input('Punnituspäivä (vvvv_kk_pp): ')
+date_of_weighing = input('Punnituspäivä (vvvv-kk-pp): ')
 
 # Ask details about her/him
 
@@ -33,7 +33,8 @@ if gender == 0:
         'Mikä on lantionympäryksesi: ', True)[0]
 
 # Create an athelete object from Kuntoilija class
-athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, date_of_weighing)
+athlete = kuntoilija.Kuntoilija(
+    name, height, weight, age, gender, date_of_weighing)
 
 # Print some information about the athlete
 text_to_show = f'Terve {athlete.nimi}, painoindeksisi tänään on {athlete.bmi}'
@@ -52,28 +53,18 @@ print(text_to_show)
 
 print('nimi', athlete.nimi, 'paino', athlete.paino)
 
-# athlete_data = [] #Empty lista for all athlete date
-
-#Read previous athlete_data from disk
-
-with open('athlete_data.json', 'r') as file:
-    athlete_data = json.load(file)
-
-    for item in athlete_data:
-        print('paino oli', item['paino'])
+athlete_data = [] # Empty list for all athlete data
 
 # A dictionary for single weighing of an athlete
-
 athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
                 'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva}
 
-# Add  a new row to  the athlete_data list
+# Add a new data row to the athlete_data list
 athlete_data.append(athlete_data_row)
 
+# SAVE DATA TO A FILE
 
-
-# SAVE DATA  A FILE  
 with open('athlete_data.json', 'w') as file:
     json.dump(athlete_data, file)
-    
-    
+
+# TODO: Read it from a JSON file
